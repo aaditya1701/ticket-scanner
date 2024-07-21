@@ -1,3 +1,4 @@
+// src/components/QrScannerComponent.js
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Webcam from 'react-webcam';
 import jsQR from 'jsqr';
@@ -13,15 +14,15 @@ const QrScannerComponent = () => {
     const [showCorrect, setShowCorrect] = useState(false);
     const [showWrong, setShowWrong] = useState(false);
 
-    const checkQRCodeStatus = useCallback(async (ticketId) => {
+    const checkQRCodeStatus = useCallback(async (docId) => {
         setIsLoading(true);
         try {
-            const docRef = doc(db, "users", ticketId); // Use the ticketId as the document ID
+            const docRef = doc(db, "users", docId); // Use the document ID
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
                 const docData = docSnap.data();
-                if (docData.flag === false) {
+                if (!docData.flag) {
                     await updateDoc(docRef, { flag: true });
                     setShowCorrect(true);
                     setTimeout(() => {
@@ -65,7 +66,7 @@ const QrScannerComponent = () => {
                 const code = jsQR(imageData.data, canvas.width, canvas.height);
                 if (code) {
                     setData(code.data);
-                    checkQRCodeStatus(code.data); // Use the QR code data as the ticket ID
+                    checkQRCodeStatus(code.data); // Use the QR code data as the document ID
                 } else {
                     setData('No QR code detected');
                 }
