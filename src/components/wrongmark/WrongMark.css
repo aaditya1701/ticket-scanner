@@ -1,0 +1,30 @@
+.wrong-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.cross-line {
+    position: absolute;
+    width: 6px;
+    height: 100px;
+    background-color: white;
+    transform-origin: center;
+}
+
+.cross-line1 {
+    transform: rotate(45deg);
+}
+
+.cross-line2 {
+    transform: rotate(-45deg);
+}

@@ -1,0 +1,29 @@
+/* src/components/tickmark/TickMark.css */
+.tickmark-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    font-size: 48px;
+    color: green;
+}
+
+.tickmark-container.visible {
+    display: block;
+    animation: fadeInOut 1.5s forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
