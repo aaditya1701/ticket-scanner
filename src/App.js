@@ -1,12 +1,19 @@
 // src/App.js
 import React from 'react';
-import QrScannerComponent from './components/QrScanner';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RegisterPage from './components/RegisterPage';
+import QrScanner from './components/QrScanner'; // Ensure correct import
 
 function App() {
   return (
-    <div className="App">
-      <QrScannerComponent />
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/scanner" element={<QrScanner />} /> {/* Ensure correct route */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
